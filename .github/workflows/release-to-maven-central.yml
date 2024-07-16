@@ -26,16 +26,8 @@ jobs:
           git config --global user.name "Neolegal (body) Builder"
           git config --global user.email "build@neolegal.fr"
 
-      - name: Set projects Maven version to GitHub Action GUI set version
-        run: mvn release:prepare --no-transfer-progress -Darguments=-DskipTests
-        env:
-          MAVEN_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
-          GITHUB_TOKEN: ${{ github.token }}
-
       - name: Publish package
-        run: mvn --batch-mode clean deploy --no-transfer-progress -P central-deploy -DskipTests=true
+        run: mvn --batch-mode clean versions:set -DremoveSnapshot deploy --no-transfer-progress -P central-deploy -DskipTests=true
         env:
           MAVEN_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
