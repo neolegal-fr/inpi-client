@@ -21,6 +21,11 @@ jobs:
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
+      - name: Set up Git user
+        run: |
+          git config --global user.name "Neolegal (body) Builder"
+          git config --global user.email "build@neolegal.fr"
+
       - name: Set projects Maven version to GitHub Action GUI set version
         run: mvn release:prepare --no-transfer-progress -Darguments=-DskipTests
         env:
