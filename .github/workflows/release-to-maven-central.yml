@@ -22,7 +22,7 @@ jobs:
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
       - name: Set projects Maven version to GitHub Action GUI set version
-        run: mvn release:prepare release:perform -Darguments=-DskipTests
+        run: mvn release:prepare -Darguments=-DskipTests
 
       - name: Publish package
         run: mvn --batch-mode clean deploy --no-transfer-progress -P central-deploy -DskipTests=true
@@ -32,4 +32,4 @@ jobs:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
       - name: Set projects Maven version to GitHub Action GUI set version
-        run: mvn release:update-versions  -Darguments=-DskipTests
+        run: mvn release:update-versions -Darguments=-DskipTests
