@@ -27,7 +27,9 @@ jobs:
           git config --global user.email "build@neolegal.fr"
 
       - name: Publish package
-        run: mvn --batch-mode clean versions:set -DremoveSnapshot deploy --no-transfer-progress -P central-deploy -DskipTests=true
+        run: |
+          mvn --batch-mode clean versions:set -DremoveSnapshot
+          mvn --batch-mode deploy --no-transfer-progress -P central-deploy -DskipTests=true
         env:
           MAVEN_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
