@@ -35,7 +35,10 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.OSS_SONATYPE_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
-      - name: Set projects Maven version to GitHub Action GUI set version
-        run: mvn release:update-versions --no-transfer-progress -Darguments=-DskipTests
+      - name: commit version increment
+        run: |
+          git add pom.xml
+          git commit -m "Update versions in pom.xml after release"
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ github.token }}
