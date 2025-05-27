@@ -3,6 +3,9 @@ package fr.neolegal.inpi.v2.client;
 import static java.util.Objects.*;
 import static java.util.stream.Collectors.*;
 
+import java.io.IOException;
+import java.nio.file.Path;
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
@@ -115,7 +118,7 @@ public class InpiClient {
         // "siren[]" qui est escapé par toURIString
         String endPoint = String.format("%scompanies/%s", api, siren);
 
-        // LE 26/04/2023, la racherche par date doit être désactivée. Suite à une maj de
+        // LE 26/04/2023, la recherche par date doit être désactivée. Suite à une maj de
         // l'INPI, le paramètre date déclenche une erreur 500 côté serveur
         // if (nonNull(date)) {
         // endPoint = String.format("%s?date=%s", endPoint, date.toString());
@@ -144,6 +147,31 @@ public class InpiClient {
 
         return attachments;
     }
+
+    public void downloadActe(Acte acte, Path outputPath) throws IOException {
+        downloadActe(acte.getId(), outputPath);
+    }
+
+    public void downloadActe(String acteId, Path output) throws IOException {
+        login();
+
+        HttpEntity<String> entity = new HttpEntity<>(builHeaders());
+
+
+        // On suppose que acte.getId() permet d'obtenir l'identifiant de l'acte à télécharger
+        String downloadUrl = String.format("%sactes/%s/download", api, acteId);
+
+        // On effectue la requête pour obtenir le fichier en tant que tableau d'octets
+        byte[] fileBytes = restTemplate.exchange(downloadUrl, HttpMethod.GET, entity, byte[].class).getBody();
+
+        Path targetPath = output;
+        if (targetPath.toFile().isDirectory()) {
+            targetPath = targetPath.resolve(acteId + ".pdf");
+        }
+        // On écrit le fichier sur le disque
+        java.nio.file.Files.write(targetPath, fileBytes);
+    }
+
 
     public void logout() {
         jwt = null;

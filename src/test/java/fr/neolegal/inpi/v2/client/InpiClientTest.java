@@ -1,11 +1,14 @@
 package fr.neolegal.inpi.v2.client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
@@ -20,6 +23,7 @@ import fr.neolegal.inpi.v2.dto.Company;
 public class InpiClientTest {
 
     ObjectMapper mapper = configureMapper();
+    InpiClient client = new InpiClient("nicolas@riousset.com", "0000ShinyStar%%");
 
     @Test
     void parseCompanies() throws IOException {
@@ -55,4 +59,10 @@ public class InpiClientTest {
                 .registerModule(module);
     }
 
+    // @Test
+    public void downloadActe() throws IOException {
+        client.downloadActe("63ded30ef1cd45aa6715ab8f", Path.of("c:/tmp/"));
+        File actual = Path.of("c:/tmp/63ded30ef1cd45aa6715ab8f.pdf").toFile();
+        assertTrue(actual.exists());
+    }
 }

@@ -5,7 +5,7 @@
 
   <groupId>fr.neolegal</groupId>
   <artifactId>inpi-client</artifactId>
-  <version>0.3.9-SNAPSHOT</version>
+  <version>0.3.9</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>
