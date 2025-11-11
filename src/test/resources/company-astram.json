@@ -1,0 +1,269 @@
+{
+    "updatedAt": "2024-02-24T17:01:31+01:00",
+    "nombreRepresentantsActifs": 1,
+    "nombreEtablissementsOuverts": 0,
+    "id": "63ae590f84e84876b01731b3",
+    "formality": {
+        "indicateurStructureEtablissement": false,
+        "siren": "908002553",
+        "content": {
+            "formeExerciceActivitePrincipale": "COMMERCIALE",
+            "natureCreation": {
+                "dateCreation": "2021-12-08",
+                "societeEtrangere": false,
+                "formeJuridique": "5710",
+                "microEntreprise": false,
+                "etablieEnFrance": true,
+                "salarieEnFrance": true,
+                "relieeEntrepriseAgricole": false,
+                "entrepriseAgricole": false,
+                "eirl": false
+            },
+            "personneMorale": {
+                "adresseEntreprise": {
+                    "caracteristiques": {
+                        "ambulant": false
+                    },
+                    "adresse": {
+                        "roleAdressePresent": false,
+                        "codePostalPresent": true,
+                        "communePresent": true,
+                        "codeInseeCommunePresent": true,
+                        "typeVoiePresent": true,
+                        "voiePresent": true,
+                        "voieCodifieePresent": false,
+                        "numVoiePresent": true,
+                        "indiceRepetitionPresent": false,
+                        "distributionSpecialePresent": false,
+                        "communeAnciennePresent": false,
+                        "rgpdPresent": false,
+                        "datePriseEffetAdressePresent": false,
+                        "complementLocalisationPresent": false,
+                        "communeDeRattachementPresent": false,
+                        "caracteristiquesPresent": false,
+                        "indicateurValidationBANPresent": true,
+                        "cedexPresent": false,
+                        "pays": "FRANCE",
+                        "codePays": "FRA",
+                        "codePostal": "75015",
+                        "commune": "PARIS 15",
+                        "codeInseeCommune": "75115",
+                        "typeVoie": "RUE",
+                        "voie": "SAINT CHARLES",
+                        "numVoie": "130"
+                    }
+                },
+                "etablissementPrincipal": {
+                    "descriptionEtablissement": {
+                        "rolePourEntreprise": "2",
+                        "pays": "FRANCE",
+                        "codePays": "FRA",
+                        "siret": "90800255300018",
+                        "activiteNonSedentaire": false,
+                        "nomCommercial": "ALPHA SANTE",
+                        "indicateurEtablissementPrincipal": true,
+                        "statutPourFormalite": "1",
+                        "codeApe": "7022Z",
+                        "etablissementValidated": false,
+                        "etablissementRdd": true
+                    },
+                    "adresse": {
+                        "roleAdressePresent": false,
+                        "codePostalPresent": true,
+                        "communePresent": true,
+                        "codeInseeCommunePresent": true,
+                        "typeVoiePresent": true,
+                        "voiePresent": true,
+                        "voieCodifieePresent": false,
+                        "numVoiePresent": true,
+                        "indiceRepetitionPresent": false,
+                        "distributionSpecialePresent": false,
+                        "communeAnciennePresent": false,
+                        "rgpdPresent": false,
+                        "datePriseEffetAdressePresent": false,
+                        "complementLocalisationPresent": false,
+                        "communeDeRattachementPresent": false,
+                        "caracteristiquesPresent": true,
+                        "indicateurValidationBANPresent": true,
+                        "cedexPresent": false,
+                        "pays": "FRANCE",
+                        "codePays": "FRA",
+                        "codePostal": "75015",
+                        "commune": "Paris",
+                        "codeInseeCommune": "75115",
+                        "typeVoie": "RUE",
+                        "voie": "130 rue Saint-Charles ",
+                        "numVoie": "130",
+                        "caracteristiques": {
+                            "ambulant": false
+                        }
+                    },
+                    "activites": [
+                        {
+                            "categoryCode": "07040802",
+                            "activiteId": "94ab43a2-422c-4426-a147-3efe430bd83a",
+                            "indicateurPrincipal": false,
+                            "indicateurProlongement": false,
+                            "dateDebut": "2021-12-01",
+                            "indicateurNonSedentaire": false,
+                            "formeExercice": "LIBERALE_NON_REGLEMENTEE",
+                            "categorisationActivite1": "07",
+                            "categorisationActivite2": "04",
+                            "categorisationActivite3": "08",
+                            "categorisationActivite4": "02",
+                            "descriptionDetaillee": "L'enseignement, la formation professionnelle sous toutes ses formes et sur tous supports à destination de tout public y compris les membres des comités d'entreprises, des Chsct et des Syndicats, l'organisation de salons et de conférences, le conseil et la gestion de la formation et de l'information à distance et la mise en place d'outils de E-Learning",
+                            "indicateurActiviteeApe": false,
+                            "indicateurArtisteAuteur": false,
+                            "indicateurMarinProfessionnel": false,
+                            "rolePrincipalPourEntreprise": false,
+                            "codeApe": "7022Z",
+                            "activiteRattacheeEirl": false,
+                            "origine": {
+                                "typeOrigine": "1"
+                            }
+                        },
+                        {
+                            "categoryCode": "07040801",
+                            "activiteId": "b37b1f4d-247e-42d8-9d5b-b9fb5e9a746c",
+                            "indicateurPrincipal": true,
+                            "indicateurProlongement": false,
+                            "dateDebut": "2021-12-01",
+                            "indicateurNonSedentaire": false,
+                            "formeExercice": "COMMERCIALE",
+                            "categorisationActivite1": "07",
+                            "categorisationActivite2": "04",
+                            "categorisationActivite3": "08",
+                            "categorisationActivite4": "01",
+                            "descriptionDetaillee": "L'enseignement, la formation professionnelle sous toutes ses formes et sur tous supports à destination de tout public y compris les membres des comités d'entreprises, des Chsct et des Syndicats, l'organisation de salons et de conférences, le conseil et la gestion de la formation et de l'information à distance et la mise en place d'outils de E-Learning",
+                            "indicateurActiviteeApe": false,
+                            "indicateurArtisteAuteur": false,
+                            "indicateurMarinProfessionnel": false,
+                            "rolePrincipalPourEntreprise": true,
+                            "codeApe": "7022Z",
+                            "activiteRattacheeEirl": false,
+                            "origine": {
+                                "typeOrigine": "1"
+                            }
+                        }
+                    ],
+                    "registreAnterieur": {
+                        "raa": {
+                            "estPresent": false
+                        },
+                        "rnm": {
+                            "estPresent": false
+                        },
+                        "rncs": {
+                            "estPresent": true,
+                            "dateDebut": "2021-12-01T00:00:00+01:00"
+                        }
+                    }
+                },
+                "composition": {
+                    "pouvoirs": [
+                        {
+                            "roleEntreprise": "73",
+                            "typeDePersonne": "INDIVIDU",
+                            "indicateurActifAgricole": false,
+                            "representantId": "3db9ce49-9905-4807-a8f5-ad91bee66f02",
+                            "individu": {
+                                "descriptionPersonne": {
+                                    "sirenPresent": false,
+                                    "dateEffetRoleDeclarantPresent": false,
+                                    "genrePresent": false,
+                                    "titrePresent": false,
+                                    "dateDeNaissance": "1993-04",
+                                    "dateDeNaissancePresent": true,
+                                    "paysNaissancePresent": true,
+                                    "codePaysNaissancePresent": true,
+                                    "lieuDeNaissancePresent": false,
+                                    "codePostalNaissancePresent": false,
+                                    "codeInseeGeographiquePresent": false,
+                                    "situationMatrimonialePresent": true,
+                                    "qualiteDeNonSedentaritePresent": false,
+                                    "indicateurDeNonSedentaritePresent": false,
+                                    "role": "73",
+                                    "nom": "Assal",
+                                    "prenoms": [
+                                        "NIELS"
+                                    ]
+                                },
+                                "adresseDomicile": {
+                                    "roleAdressePresent": false,
+                                    "codePostalPresent": true,
+                                    "communePresent": true,
+                                    "codeInseeCommunePresent": true,
+                                    "typeVoiePresent": false,
+                                    "voiePresent": true,
+                                    "voieCodifieePresent": false,
+                                    "numVoiePresent": false,
+                                    "indiceRepetitionPresent": false,
+                                    "distributionSpecialePresent": false,
+                                    "communeAnciennePresent": false,
+                                    "rgpdPresent": false,
+                                    "datePriseEffetAdressePresent": false,
+                                    "complementLocalisationPresent": false,
+                                    "communeDeRattachementPresent": false,
+                                    "caracteristiquesPresent": false,
+                                    "indicateurValidationBANPresent": true,
+                                    "cedexPresent": false,
+                                    "pays": "FRANCE",
+                                    "codePays": "FRA",
+                                    "codePostal": "75015",
+                                    "commune": "Paris",
+                                    "codeInseeCommune": "75115"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "identite": {
+                    "entreprise": {
+                        "siren": "908002553",
+                        "denomination": "ASTRAM",
+                        "formeJuridique": "5710",
+                        "nicSiege": "00018",
+                        "codeApe": "7022Z",
+                        "dateImmat": "2021-12-08",
+                        "dateDebutActiv": "2021-12-01",
+                        "entrepriseValidated": false,
+                        "entrepriseRdd": true
+                    },
+                    "description": {
+                        "objet": "L'enseignement, la formation professionnelle sous toutes ses formes et sur tous supports à destination de tout public y compris les membres des comités d'entreprises, des Chsct et des Syndicats, l'organisation de salons et de conférences, le conseil et la gestion de la formation et de l'information à distance et la mise en place d'outils de E-Learning",
+                        "duree": 99,
+                        "dateClotureExerciceSocial": "3112",
+                        "ess": false,
+                        "capitalVariable": false,
+                        "montantCapital": 250.0,
+                        "deviseCapital": "EUR",
+                        "indicateurOrigineFusionScission": false,
+                        "indicateurAssocieUnique": true,
+                        "indicateurAssocieUniqueDirigeant": true
+                    }
+                },
+                "structureEntreprise": {
+                    "indicateurPrincipalIdemSiege": true,
+                    "aucuneActivite": false
+                }
+            },
+            "registreAnterieur": {
+                "raa": {
+                    "estPresent": false
+                },
+                "rnm": {
+                    "estPresent": false
+                },
+                "rncs": {
+                    "estPresent": true,
+                    "dateImmatriculation": "2021-12-08T00:00:00+01:00"
+                }
+            }
+        },
+        "diffusionINSEE": "O",
+        "typePersonne": "M",
+        "diffusionCommerciale": true,
+        "formeJuridique": "5710"
+    },
+    "siren": "908002553"
+}

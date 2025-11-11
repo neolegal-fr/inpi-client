@@ -65,10 +65,21 @@ public class InpiClient {
             String apiUrl,
             String username,
             String password) {
+        this(apiUrl, username, password, new RestTemplate());
+    }
+
+    /**
+     * Constructeur avec RestTemplate injectable (utile pour les tests avec mock)
+     */
+    public InpiClient(
+            String apiUrl,
+            String username,
+            String password,
+            RestTemplate restTemplate) {
         this.api = apiUrl.endsWith("/") ? apiUrl : apiUrl + "/";
         this.username = username;
         this.password = password;
-        this.restTemplate = new RestTemplate();
+        this.restTemplate = restTemplate;
     }
 
     public void login() {

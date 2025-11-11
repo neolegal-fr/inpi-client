@@ -13,7 +13,8 @@ public enum TypeActe {
     CERTIFICAT("Certificat", false),
     LISTE_DES_SOUSCRIPTEURS("Liste des souscripteurs", false),
     ATTESTATION_DEPOT_FONDS_ET_LISTE_DES_SOUSCRIPTEURS("Attestation de dépôt des fonds et liste des souscripteurs", false),
-    ACTE_SOUS_SEING_PRIVE("Acte sous seing privé", false);
+    ACTE_SOUS_SEING_PRIVE("Acte sous seing privé", false),
+    DECISION_ASSOCIE_UNIQUE("Décision(s) de l'associé unique", false);
 
     final String label;
 

@@ -2,16 +2,31 @@ package fr.neolegal.inpi.v2.client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,11 +34,11 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import fr.neolegal.inpi.v2.dto.Companies;
 import fr.neolegal.inpi.v2.dto.Company;
+import fr.neolegal.inpi.v2.dto.LoginResponse;
 
 public class InpiClientTest {
 
     ObjectMapper mapper = configureMapper();
-    InpiClient client = new InpiClient("nicolas@riousset.com", "0000ShinyStar%%");
 
     @Test
     void parseCompanies() throws IOException {
@@ -37,6 +52,82 @@ public class InpiClientTest {
         String json = getResourceFileAsString("company.json");
         Company actual = mapper.readValue(json, Company.class);
         assertEquals(1, actual.getFormality().getHistorique().size());
+    }
+
+    @Test
+    void parseFindCompanyResponse() throws IOException {
+        // Arrange - Création du mock RestTemplate
+        RestTemplate mockRestTemplate = mock(RestTemplate.class);
+        
+        // Création d'un JWT valide pour simuler l'authentification
+        String token = JWT.create()
+                .withExpiresAt(Date.from(Instant.now().plusSeconds(3600)))
+                .sign(Algorithm.none());
+        LoginResponse loginResponse = new LoginResponse(token);
+        
+        // Mock de la réponse de login
+        when(mockRestTemplate.exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/sso/login"),
+                eq(HttpMethod.POST),
+                any(HttpEntity.class),
+                eq(LoginResponse.class)))
+            .thenReturn(ResponseEntity.ok(loginResponse));
+        
+        // Chargement de la réponse JSON depuis le fichier de test
+        String json = getResourceFileAsString("company-astram.json");
+        Company expectedCompany = mapper.readValue(json, Company.class);
+        
+        // Mock de la réponse findBySiren
+        when(mockRestTemplate.exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/companies/908002553"),
+                eq(HttpMethod.GET),
+                any(HttpEntity.class),
+                eq(Company.class)))
+            .thenReturn(ResponseEntity.ok(expectedCompany));
+        
+        // Création du client avec le mock
+        InpiClient clientWithMock = new InpiClient(
+                "https://registre-national-entreprises.inpi.fr/api/",
+                "testuser",
+                "testpass",
+                mockRestTemplate);
+        
+        // Act
+        Company actual = clientWithMock.findBySiren("908002553").orElseThrow();
+        
+        // Assert - Vérification des données principales de Company
+        assertEquals("63ae590f84e84876b01731b3", actual.getId());
+        assertEquals(1, actual.getNombreRepresentantsActifs());
+        assertEquals(0, actual.getNombreEtablissementsOuverts());
+        
+        // Vérification de la formality
+        assertEquals("908002553", actual.getFormality().getSiren());
+        assertEquals("5710", actual.getFormality().getFormeJuridique());
+        assertEquals("M", actual.getFormality().getTypePersonne());
+        assertTrue(actual.getFormality().isDiffusionCommerciale());
+        
+        // Vérification de l'identité
+        assertEquals("ASTRAM", actual.getFormality().getContent().getPersonneMorale().getIdentite().getEntreprise().getDenomination());
+        assertEquals("7022Z", actual.getFormality().getContent().getPersonneMorale().getIdentite().getEntreprise().getCodeApe());
+        
+        // Vérification de l'établissement principal
+        assertEquals("90800255300018", actual.getFormality().getContent().getPersonneMorale().getEtablissementPrincipal().getDescriptionEtablissement().getSiret());
+        
+        // Vérification de la composition (représentants)
+        assertEquals(1, actual.getFormality().getContent().getPersonneMorale().getComposition().getPouvoirs().size());
+        assertEquals("Assal", actual.getFormality().getContent().getPersonneMorale().getComposition().getPouvoirs().stream().findFirst().get().getIndividu().getDescriptionPersonne().getNom());
+        
+        // Vérification que les méthodes mockées ont été appelées
+        verify(mockRestTemplate).exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/sso/login"),
+                eq(HttpMethod.POST),
+                any(HttpEntity.class),
+                eq(LoginResponse.class));
+        verify(mockRestTemplate).exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/companies/908002553"),
+                eq(HttpMethod.GET),
+                any(HttpEntity.class),
+                eq(Company.class));
     }
 
     static String getResourceFileAsString(String fileName) throws IOException {
@@ -59,10 +150,105 @@ public class InpiClientTest {
                 .registerModule(module);
     }
 
-    // @Test
-    public void downloadActe() throws IOException {
-        client.downloadActe("63ded30ef1cd45aa6715ab8f", Path.of("c:/tmp/"));
-        File actual = Path.of("c:/tmp/63ded30ef1cd45aa6715ab8f.pdf").toFile();
-        assertTrue(actual.exists());
+    @Test
+    void testDownloadActeToDirectory(@TempDir Path tempDir) throws IOException {
+        // Arrange - Création du mock RestTemplate
+        RestTemplate mockRestTemplate = mock(RestTemplate.class);
+        
+        // Création d'un JWT valide pour simuler l'authentification
+        String token = JWT.create()
+                .withExpiresAt(Date.from(Instant.now().plusSeconds(3600)))
+                .sign(Algorithm.none());
+        LoginResponse loginResponse = new LoginResponse(token);
+        
+        // Mock de la réponse de login
+        when(mockRestTemplate.exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/sso/login"),
+                eq(HttpMethod.POST),
+                any(HttpEntity.class),
+                eq(LoginResponse.class)))
+            .thenReturn(ResponseEntity.ok(loginResponse));
+        
+        // Contenu PDF simulé
+        byte[] pdfContent = "PDF_CONTENT_TEST".getBytes();
+        
+        // Mock de la réponse de téléchargement
+        when(mockRestTemplate.exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/actes/123456/download"),
+                eq(HttpMethod.GET),
+                any(HttpEntity.class),
+                eq(byte[].class)))
+            .thenReturn(ResponseEntity.ok(pdfContent));
+        
+        // Création du client avec le mock
+        InpiClient clientWithMock = new InpiClient(
+                "https://registre-national-entreprises.inpi.fr/api/",
+                "testuser",
+                "testpass",
+                mockRestTemplate);
+        
+        // Act
+        clientWithMock.downloadActe("123456", tempDir);
+        
+        // Assert
+        Path expectedFile = tempDir.resolve("123456.pdf");
+        assertTrue(Files.exists(expectedFile), "Le fichier PDF devrait avoir été créé");
+        byte[] actualContent = Files.readAllBytes(expectedFile);
+        assertEquals("PDF_CONTENT_TEST", new String(actualContent), "Le contenu du fichier devrait correspondre");
+        
+        // Vérification que les méthodes mockées ont été appelées
+        verify(mockRestTemplate).exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/sso/login"),
+                eq(HttpMethod.POST),
+                any(HttpEntity.class),
+                eq(LoginResponse.class));
+        verify(mockRestTemplate).exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/actes/123456/download"),
+                eq(HttpMethod.GET),
+                any(HttpEntity.class),
+                eq(byte[].class));
+    }
+
+    @Test
+    void testDownloadActeToSpecificFile(@TempDir Path tempDir) throws IOException {
+        // Arrange
+        RestTemplate mockRestTemplate = mock(RestTemplate.class);
+        
+        String token = JWT.create()
+                .withExpiresAt(Date.from(Instant.now().plusSeconds(3600)))
+                .sign(Algorithm.none());
+        LoginResponse loginResponse = new LoginResponse(token);
+        
+        when(mockRestTemplate.exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/sso/login"),
+                eq(HttpMethod.POST),
+                any(HttpEntity.class),
+                eq(LoginResponse.class)))
+            .thenReturn(ResponseEntity.ok(loginResponse));
+        
+        byte[] pdfContent = "SPECIFIC_FILE_CONTENT".getBytes();
+        
+        when(mockRestTemplate.exchange(
+                eq("https://registre-national-entreprises.inpi.fr/api/actes/789/download"),
+                eq(HttpMethod.GET),
+                any(HttpEntity.class),
+                eq(byte[].class)))
+            .thenReturn(ResponseEntity.ok(pdfContent));
+        
+        InpiClient clientWithMock = new InpiClient(
+                "https://registre-national-entreprises.inpi.fr/api/",
+                "testuser",
+                "testpass",
+                mockRestTemplate);
+        
+        Path targetFile = tempDir.resolve("custom-name.pdf");
+        
+        // Act
+        clientWithMock.downloadActe("789", targetFile);
+        
+        // Assert
+        assertTrue(Files.exists(targetFile), "Le fichier spécifique devrait avoir été créé");
+        byte[] actualContent = Files.readAllBytes(targetFile);
+        assertEquals("SPECIFIC_FILE_CONTENT", new String(actualContent));
     }
 }
