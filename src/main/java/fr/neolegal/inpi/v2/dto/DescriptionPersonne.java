@@ -2,8 +2,13 @@ package fr.neolegal.inpi.v2.dto;
 
 import static org.apache.commons.lang3.StringUtils.*;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collection;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import fr.neolegal.inpi.v2.dto.deserializer.FlexibleInstantDeserializer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +18,8 @@ public class DescriptionPersonne {
 
     /** Date d'effet rôle déclarant */
     Boolean dateEffetRoleDeclarantPresent;
-    LocalDate dateEffetRoleDeclarant;
+    @JsonDeserialize(using = FlexibleInstantDeserializer.class)
+    Instant dateEffetRoleDeclarant;
 
     /** Rôle déclarant. Champ libre */
     String role;

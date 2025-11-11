@@ -1,17 +1,18 @@
 {
-    "updatedAt": "2024-02-24T17:01:31+01:00",
+    "updatedAt": "2025-08-12T04:09:23+02:00",
     "nombreRepresentantsActifs": 1,
     "nombreEtablissementsOuverts": 0,
-    "id": "63ae590f84e84876b01731b3",
+    "id": "63a9c6632e71a8e787026863",
     "formality": {
         "indicateurStructureEtablissement": false,
-        "siren": "908002553",
+        "siren": "378012603",
         "content": {
+            "succursaleOuFiliale": "AVEC_ETABLISSEMENT",
             "formeExerciceActivitePrincipale": "COMMERCIALE",
             "natureCreation": {
-                "dateCreation": "2021-12-08",
+                "dateCreation": "1990-05-22",
                 "societeEtrangere": false,
-                "formeJuridique": "5710",
+                "formeJuridique": "5499",
                 "microEntreprise": false,
                 "etablieEnFrance": true,
                 "salarieEnFrance": true,
@@ -40,30 +41,31 @@
                         "datePriseEffetAdressePresent": false,
                         "complementLocalisationPresent": false,
                         "communeDeRattachementPresent": false,
-                        "caracteristiquesPresent": false,
+                        "caracteristiquesPresent": true,
                         "indicateurValidationBANPresent": true,
                         "cedexPresent": false,
                         "pays": "FRANCE",
                         "codePays": "FRA",
-                        "codePostal": "75015",
-                        "commune": "PARIS 15",
-                        "codeInseeCommune": "75115",
-                        "typeVoie": "RUE",
-                        "voie": "SAINT CHARLES",
-                        "numVoie": "130"
+                        "codePostal": "13150",
+                        "commune": "TARASCON",
+                        "codeInseeCommune": "13108",
+                        "typeVoie": "RTE",
+                        "voie": "DE SAINT REMY",
+                        "numVoie": "605",
+                        "caracteristiques": {
+                            "ambulant": false
+                        }
                     }
                 },
                 "etablissementPrincipal": {
                     "descriptionEtablissement": {
                         "rolePourEntreprise": "2",
                         "pays": "FRANCE",
-                        "codePays": "FRA",
-                        "siret": "90800255300018",
+                        "siret": "37801260300015",
                         "activiteNonSedentaire": false,
-                        "nomCommercial": "ALPHA SANTE",
                         "indicateurEtablissementPrincipal": true,
-                        "statutPourFormalite": "1",
-                        "codeApe": "7022Z",
+                        "statutPourFormalite": "4",
+                        "codeApe": "4673A",
                         "etablissementValidated": false,
                         "etablissementRdd": true
                     },
@@ -88,111 +90,80 @@
                         "cedexPresent": false,
                         "pays": "FRANCE",
                         "codePays": "FRA",
-                        "codePostal": "75015",
-                        "commune": "Paris",
-                        "codeInseeCommune": "75115",
-                        "typeVoie": "RUE",
-                        "voie": "130 rue Saint-Charles ",
-                        "numVoie": "130",
+                        "codePostal": "13150",
+                        "commune": "TARASCON",
+                        "codeInseeCommune": "13108",
+                        "typeVoie": "RTE",
+                        "voie": "DE SAINT REMY",
+                        "numVoie": "605",
                         "caracteristiques": {
                             "ambulant": false
                         }
                     },
                     "activites": [
                         {
-                            "categoryCode": "07040802",
-                            "activiteId": "94ab43a2-422c-4426-a147-3efe430bd83a",
-                            "indicateurPrincipal": false,
-                            "indicateurProlongement": false,
-                            "dateDebut": "2021-12-01",
-                            "indicateurNonSedentaire": false,
-                            "formeExercice": "LIBERALE_NON_REGLEMENTEE",
-                            "categorisationActivite1": "07",
-                            "categorisationActivite2": "04",
-                            "categorisationActivite3": "08",
-                            "categorisationActivite4": "02",
-                            "descriptionDetaillee": "L'enseignement, la formation professionnelle sous toutes ses formes et sur tous supports à destination de tout public y compris les membres des comités d'entreprises, des Chsct et des Syndicats, l'organisation de salons et de conférences, le conseil et la gestion de la formation et de l'information à distance et la mise en place d'outils de E-Learning",
-                            "indicateurActiviteeApe": false,
-                            "indicateurArtisteAuteur": false,
-                            "indicateurMarinProfessionnel": false,
-                            "rolePrincipalPourEntreprise": false,
-                            "codeApe": "7022Z",
-                            "activiteRattacheeEirl": false,
-                            "origine": {
-                                "typeOrigine": "1"
-                            }
-                        },
-                        {
-                            "categoryCode": "07040801",
-                            "activiteId": "b37b1f4d-247e-42d8-9d5b-b9fb5e9a746c",
+                            "categoryCode": "06020200",
+                            "activiteId": "ced4d526-6ae6-46e3-887c-043c88e8478e",
                             "indicateurPrincipal": true,
                             "indicateurProlongement": false,
-                            "dateDebut": "2021-12-01",
+                            "dateDebut": "1990-01-22",
+                            "exerciceActivite": "P",
                             "indicateurNonSedentaire": false,
                             "formeExercice": "COMMERCIALE",
-                            "categorisationActivite1": "07",
-                            "categorisationActivite2": "04",
-                            "categorisationActivite3": "08",
-                            "categorisationActivite4": "01",
-                            "descriptionDetaillee": "L'enseignement, la formation professionnelle sous toutes ses formes et sur tous supports à destination de tout public y compris les membres des comités d'entreprises, des Chsct et des Syndicats, l'organisation de salons et de conférences, le conseil et la gestion de la formation et de l'information à distance et la mise en place d'outils de E-Learning",
+                            "categorisationActivite1": "06",
+                            "categorisationActivite2": "02",
+                            "categorisationActivite3": "02",
+                            "descriptionDetaillee": "Vente commercialisation fabrication installation entretien maintenance de tout système d'arrosage et d'irrigation --",
                             "indicateurActiviteeApe": false,
+                            "precisionActivite": "09",
                             "indicateurArtisteAuteur": false,
                             "indicateurMarinProfessionnel": false,
                             "rolePrincipalPourEntreprise": true,
-                            "codeApe": "7022Z",
+                            "codeApe": "4673A",
                             "activiteRattacheeEirl": false,
                             "origine": {
                                 "typeOrigine": "1"
-                            }
+                            },
+                            "isLocationGeranceOrGeranceMandat": false,
+                            "metierArt": false
                         }
                     ],
-                    "registreAnterieur": {
-                        "raa": {
-                            "estPresent": false
-                        },
-                        "rnm": {
-                            "estPresent": false
-                        },
-                        "rncs": {
-                            "estPresent": true,
-                            "dateDebut": "2021-12-01T00:00:00+01:00"
-                        }
-                    }
+                    "isLocationGeranceOrGeranceMandat": false
                 },
                 "composition": {
                     "pouvoirs": [
                         {
-                            "roleEntreprise": "73",
+                            "roleEntreprise": "30",
                             "typeDePersonne": "INDIVIDU",
                             "indicateurActifAgricole": false,
-                            "representantId": "3db9ce49-9905-4807-a8f5-ad91bee66f02",
+                            "representantId": "ebed5f5b-f64f-490d-83b9-146a14a35a78",
                             "individu": {
                                 "descriptionPersonne": {
                                     "sirenPresent": false,
                                     "dateEffetRoleDeclarantPresent": false,
                                     "genrePresent": false,
                                     "titrePresent": false,
-                                    "dateDeNaissance": "1993-04",
+                                    "dateDeNaissance": "1961-08",
                                     "dateDeNaissancePresent": true,
-                                    "paysNaissancePresent": true,
-                                    "codePaysNaissancePresent": true,
-                                    "lieuDeNaissancePresent": false,
-                                    "codePostalNaissancePresent": false,
-                                    "codeInseeGeographiquePresent": false,
+                                    "paysNaissancePresent": false,
+                                    "codePaysNaissancePresent": false,
+                                    "lieuDeNaissancePresent": true,
+                                    "codePostalNaissancePresent": true,
+                                    "codeInseeGeographiquePresent": true,
                                     "situationMatrimonialePresent": true,
                                     "qualiteDeNonSedentaritePresent": false,
                                     "indicateurDeNonSedentaritePresent": false,
-                                    "role": "73",
-                                    "nom": "Assal",
+                                    "role": "30",
+                                    "nom": "MARTINET",
                                     "prenoms": [
-                                        "NIELS"
+                                        "HENRI"
                                     ]
                                 },
                                 "adresseDomicile": {
                                     "roleAdressePresent": false,
                                     "codePostalPresent": true,
                                     "communePresent": true,
-                                    "codeInseeCommunePresent": true,
+                                    "codeInseeCommunePresent": false,
                                     "typeVoiePresent": false,
                                     "voiePresent": true,
                                     "voieCodifieePresent": false,
@@ -209,37 +180,55 @@
                                     "cedexPresent": false,
                                     "pays": "FRANCE",
                                     "codePays": "FRA",
-                                    "codePostal": "75015",
-                                    "commune": "Paris",
-                                    "codeInseeCommune": "75115"
+                                    "codePostal": "30300",
+                                    "commune": "BEAUCAIRE"
                                 }
-                            }
+                            },
+                            "actif": true
+                        }
+                    ]
+                },
+                "observations": {
+                    "rcs": [
+                        {
+                            "numObservation": "1806",
+                            "dateAjout": "1992-07-28",
+                            "texte": " DECISION DE NE PAS DISSOUDRE LA SOCIETE NONOBSTANT LA PERTE DE PLUS DE LA MOITIE DU CAPITAL SOCIAL --(P.V. D'AGE DU 02.07.1992) -- ",
+                            "dateGreffe": "2017-03-13",
+                            "etatObs": "Ajout",
+                            "dateDerModif": "2017-05-04"
+                        },
+                        {
+                            "texte": " LA CONVERSION DU MONTANT DU CAPITAL DES FRANCS EN EUROS A ETE EFFECTUEE D'OFFICE PAR LE GREFFE EN APPLICATION DU DECRET No 2001-474 DU 30 MAI 2001 : ANCIEN MONTANT : 50 000.00 FRF NOUVEAU MONTANT : 7 622.45 EUR ",
+                            "dateGreffe": "2017-03-13",
+                            "etatObs": "Ajout",
+                            "dateDerModif": "2017-05-04"
                         }
                     ]
                 },
                 "identite": {
                     "entreprise": {
-                        "siren": "908002553",
-                        "denomination": "ASTRAM",
-                        "formeJuridique": "5710",
-                        "nicSiege": "00018",
-                        "codeApe": "7022Z",
-                        "dateImmat": "2021-12-08",
-                        "dateDebutActiv": "2021-12-01",
+                        "siren": "378012603",
+                        "denomination": "IRRIPROS",
+                        "formeJuridique": "5499",
+                        "nicSiege": "00015",
+                        "codeApe": "4673A",
+                        "dateImmat": "1990-05-22",
+                        "dateDebutActiv": "1990-01-22",
                         "entrepriseValidated": false,
                         "entrepriseRdd": true
                     },
                     "description": {
-                        "objet": "L'enseignement, la formation professionnelle sous toutes ses formes et sur tous supports à destination de tout public y compris les membres des comités d'entreprises, des Chsct et des Syndicats, l'organisation de salons et de conférences, le conseil et la gestion de la formation et de l'information à distance et la mise en place d'outils de E-Learning",
                         "duree": 99,
-                        "dateClotureExerciceSocial": "3112",
+                        "dateClotureExerciceSocial": "3009",
                         "ess": false,
                         "capitalVariable": false,
-                        "montantCapital": 250.0,
+                        "montantCapital": 7622.45,
                         "deviseCapital": "EUR",
                         "indicateurOrigineFusionScission": false,
-                        "indicateurAssocieUnique": true,
-                        "indicateurAssocieUniqueDirigeant": true
+                        "indicateurAssocieUnique": false,
+                        "indicateurAssocieUniqueDirigeant": false,
+                        "dateFinExistence": "2089-05-21"
                     }
                 },
                 "structureEntreprise": {
@@ -256,14 +245,40 @@
                 },
                 "rncs": {
                     "estPresent": true,
-                    "dateImmatriculation": "2021-12-08T00:00:00+01:00"
+                    "dateImmatriculation": "1990-05-22T00:00:00+02:00"
                 }
-            }
+            },
+            "inscriptionsOffices": [
+                {
+                    "dateEffet": "2025-06-30",
+                    "partnerCenter": "URSSAF CN",
+                    "partnerCode": "U"
+                },
+                {
+                    "dateEffet": "2025-07-01",
+                    "partnerCenter": "URSSAF CN",
+                    "partnerCode": "U"
+                }
+            ]
         },
-        "diffusionINSEE": "O",
+        "diffusionINSEE": "N",
         "typePersonne": "M",
-        "diffusionCommerciale": true,
-        "formeJuridique": "5710"
+        "diffusionCommerciale": false,
+        "historique": [
+            {
+                "dateIntegration": "2025-07-28T04:53:06+02:00",
+                "codeEvenement": "IN_23",
+                "numeroLiasse": "J00163003239",
+                "dateEffet": "2025-06-30"
+            },
+            {
+                "dateIntegration": "2025-08-12T04:09:23+02:00",
+                "codeEvenement": "IN_40",
+                "numeroLiasse": "J00166844357",
+                "dateEffet": "2025-07-01"
+            }
+        ],
+        "formeJuridique": "5499"
     },
-    "siren": "908002553"
+    "siren": "378012603"
 }

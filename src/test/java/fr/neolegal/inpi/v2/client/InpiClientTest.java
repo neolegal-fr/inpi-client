@@ -74,12 +74,12 @@ public class InpiClientTest {
             .thenReturn(ResponseEntity.ok(loginResponse));
         
         // Chargement de la réponse JSON depuis le fichier de test
-        String json = getResourceFileAsString("company-astram.json");
+        String json = getResourceFileAsString("company-IRRIPROS.json");
         Company expectedCompany = mapper.readValue(json, Company.class);
         
         // Mock de la réponse findBySiren
         when(mockRestTemplate.exchange(
-                eq("https://registre-national-entreprises.inpi.fr/api/companies/908002553"),
+                eq("https://registre-national-entreprises.inpi.fr/api/companies/378012603"),
                 eq(HttpMethod.GET),
                 any(HttpEntity.class),
                 eq(Company.class)))
@@ -93,29 +93,29 @@ public class InpiClientTest {
                 mockRestTemplate);
         
         // Act
-        Company actual = clientWithMock.findBySiren("908002553").orElseThrow();
+        Company actual = clientWithMock.findBySiren("378012603").orElseThrow();
         
         // Assert - Vérification des données principales de Company
-        assertEquals("63ae590f84e84876b01731b3", actual.getId());
+        assertEquals("63a9c6632e71a8e787026863", actual.getId());
         assertEquals(1, actual.getNombreRepresentantsActifs());
         assertEquals(0, actual.getNombreEtablissementsOuverts());
         
         // Vérification de la formality
-        assertEquals("908002553", actual.getFormality().getSiren());
-        assertEquals("5710", actual.getFormality().getFormeJuridique());
+        assertEquals("378012603", actual.getFormality().getSiren());
+        assertEquals("5499", actual.getFormality().getFormeJuridique());
         assertEquals("M", actual.getFormality().getTypePersonne());
-        assertTrue(actual.getFormality().isDiffusionCommerciale());
+        assertEquals(false, actual.getFormality().isDiffusionCommerciale());
         
         // Vérification de l'identité
-        assertEquals("ASTRAM", actual.getFormality().getContent().getPersonneMorale().getIdentite().getEntreprise().getDenomination());
-        assertEquals("7022Z", actual.getFormality().getContent().getPersonneMorale().getIdentite().getEntreprise().getCodeApe());
+        assertEquals("IRRIPROS", actual.getFormality().getContent().getPersonneMorale().getIdentite().getEntreprise().getDenomination());
+        assertEquals("4673A", actual.getFormality().getContent().getPersonneMorale().getIdentite().getEntreprise().getCodeApe());
         
         // Vérification de l'établissement principal
-        assertEquals("90800255300018", actual.getFormality().getContent().getPersonneMorale().getEtablissementPrincipal().getDescriptionEtablissement().getSiret());
+        assertEquals("37801260300015", actual.getFormality().getContent().getPersonneMorale().getEtablissementPrincipal().getDescriptionEtablissement().getSiret());
         
         // Vérification de la composition (représentants)
         assertEquals(1, actual.getFormality().getContent().getPersonneMorale().getComposition().getPouvoirs().size());
-        assertEquals("Assal", actual.getFormality().getContent().getPersonneMorale().getComposition().getPouvoirs().stream().findFirst().get().getIndividu().getDescriptionPersonne().getNom());
+        assertEquals("MARTINET", actual.getFormality().getContent().getPersonneMorale().getComposition().getPouvoirs().stream().findFirst().get().getIndividu().getDescriptionPersonne().getNom());
         
         // Vérification que les méthodes mockées ont été appelées
         verify(mockRestTemplate).exchange(
@@ -124,7 +124,7 @@ public class InpiClientTest {
                 any(HttpEntity.class),
                 eq(LoginResponse.class));
         verify(mockRestTemplate).exchange(
-                eq("https://registre-national-entreprises.inpi.fr/api/companies/908002553"),
+                eq("https://registre-national-entreprises.inpi.fr/api/companies/378012603"),
                 eq(HttpMethod.GET),
                 any(HttpEntity.class),
                 eq(Company.class));
